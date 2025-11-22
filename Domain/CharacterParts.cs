@@ -150,36 +150,8 @@
         };
         public readonly static string[] WeaponTypeZombie =
         {
-        "Bite",
-        "Claws"
+            "Bite",
+            "Claws"
         };
-
-        public enum PantsType
-        {
-            Jeans,
-            Cargo,
-            Shorts,
-            Tactical,
-            Ripped,
-
-            // Zombie
-            Dirty,
-            Torn,
-            Loose,
-            Decayed
-        }
-
-        public enum WeaponType
-        {
-            Machete,
-            Axe,
-            Shotgun,
-            Handgun,
-            BaseballBat,
-
-            // Zombie
-            Bite,
-            Claws
-        }
     }
 }

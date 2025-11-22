@@ -33,6 +33,7 @@ namespace ZombieSurvivalGame.Services
                         break;
                     case 1:
                         // New game logic here
+
                         // Create character
                         character = characterService.GetCharacterFeatures();
 
@@ -40,8 +41,7 @@ namespace ZombieSurvivalGame.Services
                         characterRepository.SaveCharacter(character);
 
                         character.DisplayCharacterInfo();
-
-                        Console.WriteLine("\nGoing back to the menu...");
+                         Console.WriteLine("\nGoing back to the menu...");
                         Thread.Sleep(3000);
 
                         break;
@@ -74,7 +74,6 @@ namespace ZombieSurvivalGame.Services
 
                         break;
                     case 3:
-                        Console.WriteLine("Campaign Mode selected.");
                         // Campaign mode logic here
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("HOLD 'SPACE' TO SPEED UP");
@@ -88,7 +87,7 @@ namespace ZombieSurvivalGame.Services
                         ConsoleHelper.TypeEffect("With all the sacrifice, weariness and uncertainty, you start discovering the real cause of the outbreak- and the staggering fact that you were the very one the virus was targeting at the dawn of time.\r\n");
                         break;
                     case 4:
-                        ConsoleHelper.TypeEffect("Credits selected.");
+                        // Credits logic here
                         Console.ForegroundColor = ConsoleColor.Red;
                         ConsoleHelper.TypeEffect("Czire Haber");
                         Console.ResetColor();
@@ -108,7 +107,6 @@ namespace ZombieSurvivalGame.Services
 
                         Console.WriteLine("\nGoing back to the menu...");
                         Thread.Sleep(3000);
-                        // Display credits logic here
                         break;
                 }
             }
