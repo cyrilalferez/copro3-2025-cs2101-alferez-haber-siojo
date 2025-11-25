@@ -6,10 +6,12 @@
         // sundan ang role type
         public readonly static string[] RoleType =
         {
-            "Human", "Zombie"
+            "Human - A survivor trying to stay alive and avoid zombies.", "Zombie - A creature hunting humans to infect them."
         };
 
+        // age
         public readonly static int[] Ages = { 15, 26, 41, 60 };
+        public readonly static string[] AgeDescriptions = { "Fast and agile, making it easier to outrun zombies.", "Strong and balanced, good at both fighting and escaping.", "Experienced and calm, better at planning and spotting danger.", "Wise and cautious, gains bonuses for strategy and resource management." };
 
         public readonly static string[] EyeTypes =
         {
@@ -19,6 +21,7 @@
             "Monolid"
         };
 
+        // nose
         public readonly static string[] NoseTypes =
         {
             "Small",
@@ -27,6 +30,7 @@
             "Broken"
         };
 
+        // mouth
         public readonly static string[] MouthTypes =
         {
             "Small",
@@ -89,7 +93,7 @@
             "Rotting"
         };
 
-
+        // posture
         public readonly static string[] PostureTypeHuman =
         {
             "Upright",
@@ -108,6 +112,7 @@
             "Alert",
         };
 
+        // shirt
         public readonly static string[] ShirtTypeHuman =
         {
             "TShirt",
@@ -124,6 +129,7 @@
             "BloodStained",
         };
 
+        // pants
         public readonly static string[] PantsTypeHuman =
         {
             "Jeans",
@@ -140,6 +146,7 @@
             "Decayed"
         };
 
+        // weapon
         public readonly static string[] WeaponTypeHuman =
         {
             "Machete",
@@ -152,6 +159,13 @@
         {
             "Bite",
             "Claws"
+        };
+
+        // is stealthy
+        public readonly static string[] IsStealthy =
+        {
+            "Yes - Your character moves quietly and avoids zombies more easily.",
+            "No - Your character fights harder and deals more damage in combat."
         };
     }
 }

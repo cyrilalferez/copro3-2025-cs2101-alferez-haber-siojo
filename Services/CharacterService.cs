@@ -10,49 +10,51 @@ namespace ZombieSurvivalGame.Services
         {
             ConsoleHelper consoleHelper = new ConsoleHelper();
             Console.Clear();
-            Console.WriteLine("========== CHARACTER CREATION ==========");
 
+            Console.WriteLine("========== CHARACTER CREATION ==========");
             // username
             string username = Validator.GetValidInput("Enter username: ");
+            Console.Clear();
 
             // role
             ConsoleHelper.CharacterRoleOptions();
             string role = CharacterParts.RoleType[Validator.GetValidNumber("Choose your role: ", 1, 2) - 1];
+            Console.Clear();
 
             // age
             ConsoleHelper.AgeOptions();
             int ageChoice = Validator.GetValidNumber("Enter your age: ", 1, 4);
             int age = CharacterParts.Ages[ageChoice - 1];
+            Console.Clear();
 
             // eye type
             consoleHelper.EyeTypeOptions();
             string eyeType = CharacterParts.EyeTypes[Validator.GetValidNumber("Choose your eye type: ", 1, CharacterParts.EyeTypes.Length) - 1];
+            Console.Clear();
 
             // nose type
             consoleHelper.NoseTypeOptions();
             string noseType = CharacterParts.NoseTypes[Validator.GetValidNumber("Choose your nose type: ", 1, CharacterParts.NoseTypes.Length) - 1];
+            Console.Clear();
 
             // mouse type
             consoleHelper.MouthTypeOptions();
             string mouthType = CharacterParts.MouthTypes[Validator.GetValidNumber("Choose your mouth type: ", 1, CharacterParts.MouthTypes.Length) - 1];
+            Console.Clear();
 
-            // has hair
-            bool hasHair = Validator.GetValidBoolean("Do you have hair? (y/n): ");
-            string hairStyle = "";
+            // hair style
+            string hairStyle;
+            consoleHelper.HairStyleOptions(role);
 
-            if (hasHair)
+            if (role.Equals("Human"))
             {
-                consoleHelper.HairStyleOptions(role);
-
-                if (role.Equals("Human"))
-                {
-                    hairStyle = CharacterParts.HairStyleHuman[Validator.GetValidNumber("Choose your hairstyle: ", 1, CharacterParts.HairStyleHuman.Length) - 1];
-                }
-                else
-                {
-                    hairStyle = CharacterParts.HairStyleZombie[Validator.GetValidNumber("Choose your hairstyle: ", 1, CharacterParts.HairStyleZombie.Length) - 1];
-                }
+                hairStyle = CharacterParts.HairStyleHuman[Validator.GetValidNumber("Choose your hairstyle: ", 1, CharacterParts.HairStyleHuman.Length) - 1];
             }
+            else
+            {
+                hairStyle = CharacterParts.HairStyleZombie[Validator.GetValidNumber("Choose your hairstyle: ", 1, CharacterParts.HairStyleZombie.Length) - 1];
+            }
+            Console.Clear();
 
             // body type
             consoleHelper.BodyTypeOptions(role);
@@ -65,6 +67,7 @@ namespace ZombieSurvivalGame.Services
             {
                 bodyType = CharacterParts.BodyTypeZombie[Validator.GetValidNumber("Choose your body type: ", 1, CharacterParts.BodyTypeZombie.Length) - 1];
             }
+            Console.Clear();
 
             //skin color 
             consoleHelper.SkinColorOptions(role);
@@ -77,6 +80,7 @@ namespace ZombieSurvivalGame.Services
             {
                 skinColor = CharacterParts.SkinColorZombie[Validator.GetValidNumber("Choose your skin color: ", 1, CharacterParts.SkinColorZombie.Length) - 1];
             }
+            Console.Clear();
 
             // posture
             consoleHelper.PostureOptions(role);
@@ -89,6 +93,7 @@ namespace ZombieSurvivalGame.Services
             {
                 posture = CharacterParts.PostureTypeZombie[Validator.GetValidNumber("Choose your Posture Type: ", 1, CharacterParts.PostureTypeZombie.Length) - 1];
             }
+            Console.Clear();
 
             // shirt type
             consoleHelper.ShirtTypeOptions(role);
@@ -101,6 +106,7 @@ namespace ZombieSurvivalGame.Services
             {
                 shirt = CharacterParts.ShirtTypeZombie[Validator.GetValidNumber("Choose your Shirt Type: ", 1, CharacterParts.ShirtTypeZombie.Length) - 1];
             }
+            Console.Clear();
 
             // pants type
             consoleHelper.PantsTypeOptions(role);
@@ -115,6 +121,7 @@ namespace ZombieSurvivalGame.Services
                 pantsType = CharacterParts.PantsTypeZombie[
                     Validator.GetValidNumber("Choose your pants type: ", 1, CharacterParts.PantsTypeZombie.Length) - 1];
             }
+            Console.Clear();
 
             // weapon type
             consoleHelper.WeaponTypeOptions(role);
@@ -129,6 +136,7 @@ namespace ZombieSurvivalGame.Services
                 weaponType = CharacterParts.WeaponTypeZombie[
                     Validator.GetValidNumber("Choose your weapon type: ", 1, CharacterParts.WeaponTypeZombie.Length) - 1];
             }
+            Console.Clear();
 
             // create character object
             return new Character(
@@ -138,13 +146,14 @@ namespace ZombieSurvivalGame.Services
                     eye: eyeType,
                     nose: noseType,
                     mouth: mouthType,
-                    hasHair, hairStyle,
+                    hairStyle,
                     body: bodyType,
                     skin: skinColor,
                     posture,
                     shirt,
                     pants: pantsType,
-                    weapon: weaponType
+                    weapon: weaponType,
+                    isStealthy: true
                 );
         }
     }

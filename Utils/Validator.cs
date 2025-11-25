@@ -9,7 +9,7 @@
             {
                 Console.Write(prompt);
                 input = Console.ReadLine() ?? "";
-                if (!string.IsNullOrEmpty(input))
+                if (!string.IsNullOrEmpty(input.Trim()))
                 {
                     return input;
                 }

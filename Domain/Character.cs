@@ -1,4 +1,6 @@
-﻿namespace ZombieSurvivalGame.Model
+﻿using ZombieSurvivalGame.Domain;
+
+namespace ZombieSurvivalGame.Model
 {
     public class Character
     {
@@ -10,14 +12,15 @@
             string eye,
             string nose,
             string mouth,
-            bool hasHair,
             string hairStyle,
             string body,
             string skin,
             string posture,
             string shirt,
             string pants,
-            string weapon)
+            string weapon,
+            bool isStealthy
+            )
         {
             this.Role = role;
             this.Name = name;
@@ -25,7 +28,6 @@
             this.Eye = eye;
             this.Nose = nose;
             this.Mouth = mouth;
-            this.HasHair = hasHair;
             this.HairStyle = hairStyle;
             this.Body = body;
             this.Skin = skin;
@@ -33,6 +35,7 @@
             this.Shirt = shirt;
             this.Pants = pants;
             this.Weapon = weapon;
+            this.IsStealthy = isStealthy;
         }
 
         // Properties
@@ -44,7 +47,6 @@
         public string Nose { get; private set; }
         public string Mouth { get; private set; }
 
-        public bool HasHair { get; private set; }
         public string HairStyle { get; private set; }
 
         public string Body { get; private set; }
@@ -56,21 +58,21 @@
         public string Pants { get; private set; }
 
         public string Weapon { get; private set; }
+        public bool IsStealthy { get; private set; }
 
         public void DisplayCharacterInfo()
         {
+            string ageDescription = "";
+            int index = Array.IndexOf(CharacterParts.Ages, Age);
+            ageDescription = CharacterParts.AgeDescriptions[index];
+
             Console.WriteLine("Character Information:");
             Console.WriteLine($"Name: {Name}");
             Console.WriteLine($"Role: {Role}");
-            Console.WriteLine($"Age: {Age}");
+            Console.WriteLine($"Age: {Age} - {ageDescription}");
             Console.WriteLine($"Eye Type: {Eye}");
             Console.WriteLine($"Nose Type: {Nose}");
             Console.WriteLine($"Mouth Type: {Mouth}");
-            Console.WriteLine($"Has Hair: {(HasHair ? "Yes" : "No")}");
-            if (HasHair)
-            {
-                Console.WriteLine($"Hair Style: {HairStyle}");
-            }
             Console.WriteLine($"Body Type: {Body}");
             Console.WriteLine($"Skin Color: {Skin}");
             Console.WriteLine($"Posture: {Posture}");

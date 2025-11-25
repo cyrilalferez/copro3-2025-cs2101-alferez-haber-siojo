@@ -5,7 +5,8 @@ namespace ZombieSurvivalGame.Data
 {
     internal class CharacterRepository
     {
-        //save character
+        // save character
+        // NOTE: Update the Character table
         public void SaveCharacter(Character character)
         {
             try
@@ -17,9 +18,9 @@ namespace ZombieSurvivalGame.Data
                     {
                         cmd.CommandText = @"
                             INSERT INTO Characters 
-                            (Role, Name, Age, EyeType, NoseType, MouthType, HasHair, HairStyle, BodyType, SkinColor, Posture, Shirt, Pants, Weapon) 
+                            (Role, Name, Age, EyeType, NoseType, MouthType, HairStyle, BodyType, SkinColor, Posture, Shirt, Pants, Weapon, IsStealthy) 
                             VALUES 
-                            (@Role, @Name, @Age, @EyeType, @NoseType, @MouthType, @HasHair, @HairStyle, @BodyType, @SkinColor, @Posture, @Shirt, @Pants, @Weapon);
+                            (@Role, @Name, @Age, @EyeType, @NoseType, @MouthType, @HairStyle, @BodyType, @SkinColor, @Posture, @Shirt, @Pants, @Weapon, @IsStealthy);
                         ";
                         cmd.Parameters.AddWithValue("@Role", character.Role);
                         cmd.Parameters.AddWithValue("@Name", character.Name);
@@ -27,7 +28,6 @@ namespace ZombieSurvivalGame.Data
                         cmd.Parameters.AddWithValue("@EyeType", character.Eye);
                         cmd.Parameters.AddWithValue("@NoseType", character.Nose);
                         cmd.Parameters.AddWithValue("@MouthType", character.Mouth);
-                        cmd.Parameters.AddWithValue("@HasHair", character.HasHair ? 1 : 0);
                         cmd.Parameters.AddWithValue("@HairStyle", character.HairStyle);
                         cmd.Parameters.AddWithValue("@BodyType", character.Body);
                         cmd.Parameters.AddWithValue("@SkinColor", character.Skin);
@@ -35,6 +35,7 @@ namespace ZombieSurvivalGame.Data
                         cmd.Parameters.AddWithValue("@Shirt", character.Shirt);
                         cmd.Parameters.AddWithValue("@Pants", character.Pants);
                         cmd.Parameters.AddWithValue("@Weapon", character.Weapon);
+                        cmd.Parameters.AddWithValue("@IsStealthy", character.IsStealthy);
                         cmd.ExecuteNonQuery();
                     }
 
@@ -48,6 +49,7 @@ namespace ZombieSurvivalGame.Data
         }
 
         // load character
+        // NOTE: Update the Character table
         public List<Character> LoadCharacters()
         {
             List<Character> characters = new List<Character>();
@@ -70,14 +72,14 @@ namespace ZombieSurvivalGame.Data
                                     reader.GetString(reader.GetOrdinal("EyeType")),
                                     reader.GetString(reader.GetOrdinal("NoseType")),
                                     reader.GetString(reader.GetOrdinal("MouthType")),
-                                    reader.GetInt32(reader.GetOrdinal("HasHair")) == 1,
                                     reader.GetString(reader.GetOrdinal("HairStyle")),
                                     reader.GetString(reader.GetOrdinal("BodyType")),
                                     reader.GetString(reader.GetOrdinal("SkinColor")),
                                     reader.GetString(reader.GetOrdinal("Posture")),
                                     reader.GetString(reader.GetOrdinal("Shirt")),
                                     reader.GetString(reader.GetOrdinal("Pants")),
-                                    reader.GetString(reader.GetOrdinal("Weapon"))
+                                    reader.GetString(reader.GetOrdinal("Weapon")),
+                                    reader.GetInt32(reader.GetOrdinal("IsStealthy")) == 1
                                 );
                                 characters.Add(character);
                             }

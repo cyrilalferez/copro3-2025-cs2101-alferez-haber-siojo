@@ -53,6 +53,9 @@ namespace ZombieSurvivalGame.Services
                         if (characters.Count == 0)
                         {
                             ConsoleHelper.TypeEffect("No saved characters found.");
+
+                            Console.WriteLine("\nGoing back to the menu...");
+                            Thread.Sleep(3000);
                             break;
                         }
 
@@ -70,7 +73,8 @@ namespace ZombieSurvivalGame.Services
 
                         // NOTE: After selecting character, proceed to menu again Sleep for now
                         Console.WriteLine("\nGoing back to the menu...");
-                        Thread.Sleep(3000);
+                        //Thread.Sleep(3000);
+                        Console.ReadKey();
 
                         break;
                     case 3:
@@ -85,6 +89,9 @@ namespace ZombieSurvivalGame.Services
                         ConsoleHelper.TypeEffect("Some of them come with you, and each has his talents and tragic histories, and in addition to all those, fears and desperation which are going to divide your camp.\r\n");
                         ConsoleHelper.TypeEffect("As you get further in you get more tragedies: teammates you have to leave behind to allow others to survive, rescue missions that go terribly astray, and tough decisions that haunt your conscience.");
                         ConsoleHelper.TypeEffect("With all the sacrifice, weariness and uncertainty, you start discovering the real cause of the outbreak- and the staggering fact that you were the very one the virus was targeting at the dawn of time.\r\n");
+
+                        ConsoleHelper.TypeEffect("Press any key to continue...");
+                        Console.ReadKey();
                         break;
                     case 4:
                         // Credits logic here
@@ -105,8 +112,8 @@ namespace ZombieSurvivalGame.Services
                         Console.ResetColor();
                         Console.WriteLine(" - Siya naman ay nagbibigay siya ng mga idea para sa pagpapabuti ng gameplay at mechanics ng laro, at tumutulong sa iba't ibang gawain upang masiguro ang maayos na progreso ng proyekto.\nAng kanyang naibibigay na tulong sa ideya at actual na trabaho ay nakakatulong sa pag aayos ng laro at sa maayos na flow ng trabaho sa program.\r\n");
 
-                        Console.WriteLine("\nGoing back to the menu...");
-                        Thread.Sleep(3000);
+                        ConsoleHelper.TypeEffect("Press any key to continue...");
+                        Console.ReadKey();
                         break;
                 }
             }
